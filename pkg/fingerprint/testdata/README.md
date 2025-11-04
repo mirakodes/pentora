@@ -333,6 +333,17 @@ Actual Negative     FP (false alarm)      TN (correct rejection)
 - **Validation Framework**: [../validation.go](../validation.go)
 - **Validation Tests**: [../validation_test.go](../validation_test.go)
 - **Validation Report**: [../VALIDATION_REPORT.md](../VALIDATION_REPORT.md)
+
+### Performance Benchmarks (Quick Guide)
+
+- Generate multi-sample baseline for reliable benchstat:
+  - `go test -bench=. -benchmem ./pkg/fingerprint -run ^$ -benchtime=1s -count=6 > pkg/fingerprint/testdata/baseline.txt`
+- Compare current vs baseline with benchstat:
+  - `go test -bench=. -benchmem ./pkg/fingerprint -run ^$ -benchtime=1s -count=6 | benchstat pkg/fingerprint/testdata/baseline.txt -`
+- Notes:
+  - Use `-count>=6` to get confidence intervals; increase if variance is high.
+  - Keep baseline stable; update only after intentional performance changes.
+  - Large dataset benches: `BenchmarkValidationRunnerLargeDataset` and `…10k` validate scaling behavior.
 - **Fingerprint Rules**: [../data/fingerprint_db.yaml](../data/fingerprint_db.yaml)
 - **Resolver Implementation**: [../resolver_rulebased.go](../resolver_rulebased.go)
 
