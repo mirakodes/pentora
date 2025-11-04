@@ -52,6 +52,31 @@ go test -bench=. -benchmem ./pkg/fingerprint -benchtime=5s
 go test -bench=. -race ./pkg/fingerprint -benchtime=1s
 ```
 
+### Performance Comparison (Baseline vs Current)
+
+- Baseline (multi-sample recommended):
+  - `go test -bench=. -benchmem ./pkg/fingerprint -run ^$ -benchtime=1s -count=6 > pkg/fingerprint/testdata/baseline.txt`
+- Compare current to baseline with benchstat:
+  - `go test -bench=. -benchmem ./pkg/fingerprint -run ^$ -benchtime=1s -count=6 | benchstat pkg/fingerprint/testdata/baseline.txt -`
+- Notes:
+  - Prefer `-count>=6` for confidence intervals; increase if variance is high.
+  - Update baseline only after intentional, validated changes.
+
+#### Current Snapshot
+
+Environment: darwin/arm64, Apple M4 Pro, Go $(go version | awk '{print $3}')
+
+Highlights (benchstat vs baseline, count=6):
+
+- ResolverSingleMatch: -6.2% time/op, ~0% B/op, 0 allocs delta
+- ResolverMultipleRules: ~ -1% time/op, ~0% B/op, 0 allocs delta
+- ResolverNoMatch: ~ +1% time/op (noise), ~0% B/op, 0 allocs delta
+- ResolverVersionExtraction: -9.5% time/op, -0.05% B/op, 0 allocs delta
+- ResolverWithAntiPatterns: -13.6% time/op, ~0% B/op, 0 allocs delta
+- ValidationRunner: ~ -2.4% time/op (ns), ~0% B/op, 0 allocs delta
+
+Geomean time/op delta: -6.95%
+
 ### Running Full Validation Suite
 
 ```bash
