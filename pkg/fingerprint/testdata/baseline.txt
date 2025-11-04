@@ -1,0 +1,36 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/pentora-ai/pentora/pkg/fingerprint
+cpu: Apple M4 Pro
+BenchmarkResolverSingleMatch-14             	 2388284	       507.9 ns/op	    2800 B/op	       3 allocs/op
+BenchmarkResolverSingleMatch-14             	 2318209	       513.1 ns/op	    2800 B/op	       3 allocs/op
+BenchmarkResolverSingleMatch-14             	 2339973	       512.5 ns/op	    2799 B/op	       3 allocs/op
+BenchmarkResolverMultipleRules-14           	 1000000	      1075 ns/op	    2798 B/op	       4 allocs/op
+BenchmarkResolverMultipleRules-14           	 1000000	      1061 ns/op	    2798 B/op	       4 allocs/op
+BenchmarkResolverMultipleRules-14           	 1000000	      1033 ns/op	    2795 B/op	       4 allocs/op
+BenchmarkResolverNoMatch-14                 	 2184163	       565.3 ns/op	    2754 B/op	       4 allocs/op
+BenchmarkResolverNoMatch-14                 	 2150530	       563.5 ns/op	    2754 B/op	       4 allocs/op
+BenchmarkResolverNoMatch-14                 	 2148820	       566.8 ns/op	    2754 B/op	       4 allocs/op
+BenchmarkResolverVersionExtraction-14       	 1933701	       618.8 ns/op	    2838 B/op	       4 allocs/op
+BenchmarkResolverVersionExtraction-14       	 1917396	       628.8 ns/op	    2839 B/op	       4 allocs/op
+BenchmarkResolverVersionExtraction-14       	 1886506	       625.6 ns/op	    2838 B/op	       4 allocs/op
+BenchmarkResolverWithAntiPatterns-14        	 2027006	       609.1 ns/op	    2789 B/op	       3 allocs/op
+BenchmarkResolverWithAntiPatterns-14        	 2049441	       583.2 ns/op	    2789 B/op	       3 allocs/op
+BenchmarkResolverWithAntiPatterns-14        	 2082434	       539.4 ns/op	    2785 B/op	       3 allocs/op
+BenchmarkResolverWithTelemetry-14           	  564681	      2179 ns/op	    3031 B/op	       5 allocs/op
+BenchmarkResolverWithTelemetry-14           	  569902	      2133 ns/op	    3032 B/op	       5 allocs/op
+BenchmarkResolverWithTelemetry-14           	  565783	      2129 ns/op	    3033 B/op	       5 allocs/op
+BenchmarkResolverConcurrent-14              	 2034003	       598.4 ns/op	    2908 B/op	       4 allocs/op
+BenchmarkResolverConcurrent-14              	 1941747	       641.2 ns/op	    2946 B/op	       4 allocs/op
+BenchmarkResolverConcurrent-14              	 1814481	       636.4 ns/op	    2936 B/op	       4 allocs/op
+BenchmarkValidationRunner-14                	    7981	    142643 ns/op	  424297 B/op	     516 allocs/op
+BenchmarkValidationRunner-14                	    9020	    137187 ns/op	  423979 B/op	     516 allocs/op
+BenchmarkValidationRunner-14                	    8805	    139510 ns/op	  423917 B/op	     516 allocs/op
+BenchmarkValidationMetricsCalculation-14    	  492554	      2424 ns/op	    2584 B/op	      10 allocs/op
+BenchmarkValidationMetricsCalculation-14    	  495738	      2461 ns/op	    2584 B/op	      10 allocs/op
+BenchmarkValidationMetricsCalculation-14    	  495283	      2394 ns/op	    2584 B/op	      10 allocs/op
+BenchmarkRulePreparation-14                 	    7388	    165654 ns/op	  446662 B/op	    4389 allocs/op
+BenchmarkRulePreparation-14                 	    7635	    161139 ns/op	  446662 B/op	    4389 allocs/op
+BenchmarkRulePreparation-14                 	    7424	    161071 ns/op	  446660 B/op	    4389 allocs/op
+PASS
+ok  	github.com/pentora-ai/pentora/pkg/fingerprint	45.031s
